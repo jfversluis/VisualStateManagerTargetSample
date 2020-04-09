@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://xamarin.com/schemas/2014/forms/design" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" mc:Ignorable="d" x:Class="VSMTargetSample.MainPage">
+    <yummy:PancakeView x:Name="MyLayout" HorizontalOptions="Fill" VerticalOptions="Fill">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="ColorStates">
+                <VisualState x:Name="Normal">
+                    <VisualState.Setters>
+                        <Setter Property="BackgroundGradientStartColor" Value="Green" />
+                        <Setter Property="BackgroundGradientEndColor" Value="Yellow" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Invalid">
+                    <VisualState.Setters>
+                        <Setter Property="BackgroundGradientStartColor" Value="Red" />
+                        <Setter Property="BackgroundGradientEndColor" Value="Orange" />
+                        <Setter TargetName="NeedsValidValueEntry" Property="Entry.BackgroundColor" Value="Red"/>
+                        <Setter TargetName="NeedsValidValueEntry" Property="Entry.TextColor" Value="White"/>
+                        <Setter TargetName="SubmitButton" Property="Button.IsEnabled" Value="False"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+            <Entry x:Name="NeedsValidValueEntry" Placeholder="Numbers only and no starting with 1" TextChanged="NeedsValidValueEntry_TextChanged" HorizontalTextAlignment="Start" HorizontalOptions="Center" VerticalOptions="Center" FontSize="Large">
+                <!-- Not needed anymore because of TargetName -->
+                <!--<VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="ColorStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Invalid">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="Red"/>
+                                <Setter Property="TextColor" Value="White"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>-->
+            </Entry>
+
+            <Button x:Name="SubmitButton" Text="Submit Number" Clicked="SubmitButton_Clicked" TextColor="White" FontSize="25" HorizontalOptions="Center" VerticalOptions="Center">
+                <!-- Not needed anymore because of TargetName -->
+                <!--<VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="ColorStates">
+                        <VisualState x:Name="Normal" />
+                        <VisualState x:Name="Invalid">
+                            <VisualState.Setters>
+                                <Setter Property="IsEnabled" Value="False"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>-->
+            </Button>
+
+            <Label x:Name="CurrentState" HorizontalOptions="Center" VerticalOptions="Center"></Label>
+
+            <Button x:Name="ToggleValidButton" Text="Toggle State" Clicked="ToggleValid_OnClicked" TextColor="White" FontSize="25" HorizontalOptions="Center" VerticalOptions="Center"></Button>
+        </StackLayout>
+    </yummy:PancakeView>
+</ContentPage>
